@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <h1>Dheeraj Kumar Tatipamula-1002003485</h1>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <style>
+        fieldset {
+            background-color: #eeeeee;
+        }
+
+        legend {
+            background-color: gray;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        input {
+            margin: 5px;
+        }
+    </style>
+    <div class="container">
+        <div id="piechart" style="width: 900px; height: 500px;"></div>
+    </div>
+    <hr>
+    <div class="container">
+        <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+    </div>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        var info = 
+            {{
+                data | tojson
+            }};
+        console.log('info', info);
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart1);
+        const key = Object.keys(info)
+        function drawChart1() {
+            let obj= [['range', 'value']]
+            for(let i=0;i<key.length;i++) {
+                obj.push([key[i],info[key[i]]])
+            }
+                console.log("object",obj)
+            var data = google.visualization.arrayToDataTable(obj);
+
+            var options = {
+                title: 'Range',
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+
+
+        }
+        //   ------------------------------------------------- Bar chart starts here ------------------------------
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <h1>Dheeraj Kumar Tatipamula -1002003485</h1>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <style>
+        fieldset {
+            background-color: #eeeeee;
+        }
+
+        legend {
+            background-color: gray;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        input {
+            margin: 5px;
+        }
+    </style>
+     <div>
+        <table>
+            <tr>
+                                <th>
+               question number 
+            </th>
+              <th>
+               questions 
+            </th>
+            
+              <th>
+               answers 
+            </th>
+            
+              <th>
+               score 
+            </th>
+            </tr>
+            {%for i in range(0, len)%}
+            <tr>
+                 <td>
+                    {{i+1}}
+                </td>
+                <td>
+                    {{d1[i]}}
+                </td>
+                 <td>
+                    {{d2[i]}}
+                </td>
+                 <td>
+                    {{d3[i]}}
+                </td>
+            </tr>
+    
+                    {% endfor %}
+        </table>
+    </div>
+    <div>
+            <form action="/teacher" method="post" enctype="multipart/form-data">
+                <label>
+            teacher post the question below
+        </label>
+        <input type="text" name="question">
+        <input type="submit" name="submit" value="Generate">
+    </form>
+
+    </div>
+   <div id="ans">
+                   <form action="/grade" method="post" enctype="multipart/form-data">
+                <label>
+        Enter the question number to grade
+        </label>
+        <input type="number" name="number">
+        <label>
+            Enter the grade
+        </label>
+        <input type="number" name="grade">
+        <input type="submit" name="submit" value="Generate">
+    </form>
+   </div>
+</body>
+
+</html>
