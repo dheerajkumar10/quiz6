@@ -27,66 +27,47 @@
             margin: 5px;
         }
     </style>
-     <div>
+    <div>
         <table>
             <tr>
-                                <th>
-               question number 
-            </th>
-              <th>
-               questions 
-            </th>
-            
-              <th>
-               answers 
-            </th>
-            
-              <th>
-               score 
-            </th>
-            </tr>
-            {%for i in range(0, len)%}
+                <th>
+                    Name </th>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Age </th>
+                <th>
+                    {% for rec in data %}
             <tr>
-                 <td>
-                    {{i+1}}
+                <td>
+                    {{rec['id']}}
                 </td>
                 <td>
-                    {{d1[i]}}
+                    {{rec['name']}}
                 </td>
-                 <td>
-                    {{d2[i]}}
-                </td>
-                 <td>
-                    {{d3[i]}}
+                <td>
+                    {{rec['age']}}
                 </td>
             </tr>
-    
-                    {% endfor %}
+
+            {% endfor %}
         </table>
     </div>
     <div>
-            <form action="/teacher" method="post" enctype="multipart/form-data">
-                <label>
-            teacher post the question below
-        </label>
-        <input type="text" name="question">
-        <input type="submit" name="submit" value="Generate">
-    </form>
+        <form action="/admin" method="post" enctype="multipart/form-data">
+            <label>
+                course
+            </label>
+            <input type="number" name="course">
+            <label>
+                Section
+            </label>
+            <input type="number" name="section">
+            <input type="submit" name="submit" value="Generate">
+        </form>
 
     </div>
-   <div id="ans">
-                   <form action="/grade" method="post" enctype="multipart/form-data">
-                <label>
-        Enter the question number to grade
-        </label>
-        <input type="number" name="number">
-        <label>
-            Enter the grade
-        </label>
-        <input type="number" name="grade">
-        <input type="submit" name="submit" value="Generate">
-    </form>
-   </div>
 </body>
 
 </html>
